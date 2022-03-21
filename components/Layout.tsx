@@ -1,15 +1,16 @@
-import Head from 'next/head';
-import Image from 'next/image';
-import Link from 'next/link';
+import Head from "next/head";
+import Link from "next/link";
+import Footer from "./footer";
+import Header from "./header";
 
 interface LayoutProps
 {
   children: any;
-  home: boolean;
+  home?: boolean;
 }
 
-const name = 'Your Name';
-export const siteTitle = 'Next.js Sample Website';
+export const name = "Your Name";
+export const siteTitle = "Next.js Sample Website";
 
 export default function Layout(props: LayoutProps) {
   return (
@@ -29,39 +30,7 @@ export default function Layout(props: LayoutProps) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <header>
-        {props.home ? (
-          <>
-            <Image
-              priority
-              src="/images/profile.jpg"
-              height={144}
-              width={144}
-              alt={name}
-            />
-            <h1>{name}</h1>
-          </>
-        ) : (
-          <>
-            <Link href="/">
-              <a>
-                <Image
-                  priority
-                  src="/images/profile.jpg"
-                  height={108}
-                  width={108}
-                  alt={name}
-                />
-              </a>
-            </Link>
-            <h2>
-              <Link href="/">
-                <a>{name}</a>
-              </Link>
-            </h2>
-          </>
-        )}
-      </header>
+      <Header />
       <main>{props.children}</main>
       {!props.home && (
         <div>
@@ -70,6 +39,7 @@ export default function Layout(props: LayoutProps) {
           </Link>
         </div>
       )}
+      <Footer />
     </div>
-  )
+  );
 }
