@@ -1,6 +1,6 @@
-export interface User
+import { Credentials } from "./Credentials";
+
+export interface User extends Credentials
 {
-  username: string;
-  password?: string;
   phoneNumber: string;
 }
